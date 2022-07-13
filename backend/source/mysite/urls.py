@@ -18,6 +18,6 @@ from django.urls import path
 from tarjimon import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.index),
+    path('', views.index),
     path('welcome/', views.welcome)
 ]
