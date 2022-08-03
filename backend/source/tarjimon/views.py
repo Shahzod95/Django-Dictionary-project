@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Lugat
 
 def index(request):
-    return render(request, 'index.html', {'ism':'Kimdir'})
 
-def welcome(request):
-    return HttpResponse("""
-    <h1>Salom Do'stlar saytimizga xush kelibsizlar!!!</h2>
-    <hr>
-    <p>Bu mening yangi loyiham</p>
-    """)
+    soz = request.GET.get('q','')
+    if soz and soz != '':
+        natija = Lugat.objects.filter(inglizcha__contains=soz).all()[:3]
+    else:
+        natija = None
+    return render(request, 'index.html', {'q':soz, 'natija':natija})

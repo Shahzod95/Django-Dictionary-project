@@ -25,10 +25,10 @@
 
             <div class="inline" style="width: 90%;">
                 <div class="ui massive form search">
-                    <div class="ui icon input" style="width: 100%;">
-                        <input type="text" class="prompt" placeholder="So'zni kiriting...">
+                    <form method="GET" action="/" class="ui icon input" style="width: 100%;">
+                        <input name="q" value="{{q}}" type="text" class="prompt" placeholder="So'zni kiriting...">
                         <i class="search link icon"></i>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -43,10 +43,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% if natija %}
+                    {% for tarjima in natija %}
                     <tr>
-                        <td>Programmer</td>
-                        <td>Dasturchi</td>
+                        <td>{{tarjima.inglizcha}}</td>
+                        <td>{{tarjima.uzbekcha}}</td>
                     </tr>
+                    {% endfor %}
+                    {% endif %}
                 </tbody>
             </table>
         </div>
